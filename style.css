@@ -1,14 +1,16 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: "Playfair Display", serif;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   color: white;
-  background-color: darkgray;
+  background-image: linear-gradient(darkgray, lightgray);
   line-height: 1.6em;
+  min-height: 100vh;
 }
 
 a {
@@ -18,7 +20,7 @@ a {
 
 h1 {
   text-align: center;
-  margin-bottom: 12px;
+  margin-bottom: 50px;
 }
 
 #container {

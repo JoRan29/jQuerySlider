@@ -29,20 +29,31 @@ $(document).ready(() => {
   $(".active").show();
 
   // click to go next
-  $("#next").on("click", () => {
+  $("#next").on("click", nextSlide);
+
+  // click to go prev
+  $("#prev").on("click", prevSlide);
+
+  // AutoSwitch
+  if (autoSwitch == true) {
+    setInterval(nextSlide, autoSwitchSpeed);
+  }
+
+  // swith to next function
+  function nextSlide() {
     $(".active").removeClass("active").addClass("oldActive");
     if ($(".oldActive").is(":last-child")) {
       $(".slide").first().addClass("active");
     } else {
       $(".oldActive").next().addClass("active");
     }
-    $("oldActive").removeClass("oldActive");
+    $(".oldActive").removeClass("oldActive");
     $(".slide").fadeOut(speed);
     $(".active").fadeIn(speed);
-  });
+  }
 
-  // click to go prev
-  $("#prev").on("click", () => {
+  // switch to prev function
+  function prevSlide() {
     $(".active").removeClass("active").addClass("oldActive");
     if ($(".oldActive").is(":first-child")) {
       $(".slide").last().addClass("active");
@@ -52,19 +63,5 @@ $(document).ready(() => {
     $(".oldActive").removeClass("oldActive");
     $(".slide").fadeOut(speed);
     $(".active").fadeIn(speed);
-  });
-
-  if (autoSwitch == true) {
-    setInterval(() => {
-      $(".active").removeClass("active").addClass("oldActive");
-      if ($(".oldActive").is(":last-child")) {
-        $(".slide").first().addClass("active");
-      } else {
-        $(".oldActive").next().addClass("active");
-      }
-      $("oldActive").removeClass("oldActive");
-      $(".slide").fadeOut(speed);
-      $(".active").fadeIn(speed);
-    }, autoSwitchSpeed);
   }
 });
